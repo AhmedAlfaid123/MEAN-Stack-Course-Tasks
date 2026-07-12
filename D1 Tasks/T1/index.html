@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #666;
+        }
+
+        .results {
+            margin-top: 1.5rem;
+        }
+
+        .results > div {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .results div[id] {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" id="number1" placeholder="Enter First Number">
+    <input type="number" id="number2" placeholder="Enter Second Number">
+    <div class="results">
+        <div class="add">
+            <h3>Add Operation result: </h3>
+            <div id="add"></div>
+        </div>
+        <div class="subtract">
+            <h3>Subtraction Operation result: </h3>
+            <div id="subtract"></div>
+        </div>
+        <div class="multiple">
+            <h3>Multi Operation result: </h3>
+            <div id="multiple"></div>
+        </div>
+        <div class="division">
+            <h3>Division Operation result: </h3>
+            <div id="division"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
