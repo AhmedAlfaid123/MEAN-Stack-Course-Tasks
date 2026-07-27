@@ -1,0 +1,78 @@
+<div class="container">
+  <h2>Smart Products Board</h2>
+
+  <div class="loginCard">
+    @if(isLoggedIn){
+    <h3>Welcome {{userName}}</h3>
+    <button class="logout" (click)="toggleLogin()">Logout</button>
+    } @else {
+    <h3>Please login</h3>
+    <button class="login" (click)="toggleLogin()">Login</button>
+    }
+  </div>
+
+  <div class="statusButtons">
+    <div class="btn-group">
+      <button (click)="setStatus('idle')"
+        [class.active]="status === 'idle'">Idle</button>
+      <button (click)="setStatus('loading')"
+        [class.active]="status === 'loading'">Loading</button>
+      <button (click)="setStatus('success')"
+        [class.active]="status === 'success'">Success</button>
+      <button (click)="setStatus('error')"
+        [class.active]="status === 'error'">Error</button>
+    </div>
+
+    @switch (status) {
+    @case ('loading') {
+    <div class="loading">Loading...</div>
+    }
+    @case ('success') {
+    <div class="success">Success</div>
+    }
+    @case ('error') {
+    <div class="error">Error</div>
+    }
+    @default {
+    <div class="idle">idle</div>
+    }
+    }
+  </div>
+  
+  <div class="searchBox">
+    <input type="text" class="search" [(ngModel)]="searchText" placeholder="Enter product name">
+    <p>Number of products : {{filteredProducts.length}}</p>
+  </div>
+
+  <div class="products">
+    <button class="clear" (click)="clearProducts()">Clear Products</button>
+    @if (filteredProducts.length){
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Stock Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of filteredProducts; track product.id) {
+        <tr>
+          <td>{{product.name}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.price}}</td>
+          @if (product.inStock) {
+          <td class="inStock">In Stock</td>
+          }@else{
+          <td class="outStock">Out Stock</td>
+          }
+        </tr>
+        }
+      </tbody>
+    </table>
+    }@else{
+    <p>Products is empty</p>
+    }
+  </div>
+</div>
